@@ -1,0 +1,8 @@
+wxWidgets
+.vs
+/MagicEngineCpp.sln
+/MagicEditor/MagicEditor.vcxproj.user
+/MagicEditor/MagicEditor.vcxproj
+/MagicEngine/MagicEngine.vcxproj
+bin-int
+bin
