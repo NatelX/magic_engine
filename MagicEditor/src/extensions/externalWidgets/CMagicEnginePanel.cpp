@@ -13,7 +13,7 @@ namespace WxWidgetsMagicEngine {
             wxPanel(parentWindow) {
 
             wxBoxSizer* verticalBoxSizer = new wxBoxSizer(wxVERTICAL);
-            wxWindow* renderPanel = obtainRenderPanelByType(renderType);
+            wxWindow* renderPanel = obtainRenderPanelByType(parentWindow, renderType);
             verticalBoxSizer->Add(renderPanel, 1, wxEXPAND);
             SetSizer(verticalBoxSizer);
             SetAutoLayout(true);
