@@ -65,7 +65,8 @@ project "MagicEditor"
 	
 	includedirs {
 		wxWidgetsDirectory .. "include/msvc",
-		wxWidgetsDirectory .. "include/"
+		wxWidgetsDirectory .. "include/",
+		"MagicEditor/src/"
 	}
 	
 	libdirs {
