@@ -3,6 +3,9 @@ wxWidgets
 /MagicEngineCpp.sln
 /MagicEditor/MagicEditor.vcxproj.user
 /MagicEditor/MagicEditor.vcxproj
+/MagicEditor/MagicEditor.vcxproj.filters
 /MagicEngine/MagicEngine.vcxproj
+/MagicEngine/MagicEngine.vcxproj.user
+/MagicEngine/MagicEngine.vcxproj.filters
 bin-int
 bin
