@@ -17,13 +17,17 @@ project "MagicEngine"
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
 	
+	pchheader "mepch.h"
+	pchsource "MagicEngine/src/magicEngine/mepch.cpp"
+	
 	files {
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp"
 	}
 	
 	includedirs {
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/src/magicEngine",
+		"%{prj.name}/vendor/spdlog/include/"
 	}
 	
 	cppdialect "C++17"
@@ -37,7 +41,7 @@ project "MagicEngine"
 		}
 		
 		postbuildcommands {
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputDir .. "MagicEditor")
+			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputDir .. "/MagicEditor")
 		}
 		
 	filter "configurations:Debug"
@@ -62,11 +66,13 @@ project "MagicEditor"
 	}
 	
 	wxWidgetsDirectory = "%{prj.name}/vendor/wxWidgets/"
+	magicEngineDirectory = "MagicEngine/"
 	
 	includedirs {
-		wxWidgetsDirectory .. "include/msvc",
-		wxWidgetsDirectory .. "include/",
-		"MagicEditor/src/"
+		"%{prj.name}/src/",
+		magicEngineDirectory .. "src/",
+		wxWidgetsDirectory .. "include/msvc/",
+		wxWidgetsDirectory .. "include/"
 	}
 	
 	libdirs {
