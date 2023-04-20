@@ -26,6 +26,7 @@ project "MagicEngine"
 	}
 	
 	includedirs {
+		"%{prj.name}/src/",
 		"%{prj.name}/src/magicEngine",
 		"%{prj.name}/vendor/spdlog/include/"
 	}
@@ -76,8 +77,11 @@ project "MagicEditor"
 	}
 	
 	libdirs {
-		wxWidgetsDirectory .. "lib/vc_x64_lib"
+		wxWidgetsDirectory .. "lib/vc_x64_lib",
+		"%{cfg.targetdir}/../MagicEngine/"
 	}
+	
+	links { "MagicEngine.lib" }
 	
 	cppdialect "C++17"
 	
@@ -85,8 +89,7 @@ project "MagicEditor"
 		staticruntime "Off"
 		systemversion "10.0"
 		defines {
-			"MAGICENGINE_PLATFORM_WINDOWS",
-			"MAGICENGINE_API"
+			"MAGICENGINE_PLATFORM_WINDOWS"
 		}
 		
 	filter "configurations:Debug"

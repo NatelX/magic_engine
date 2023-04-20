@@ -8,8 +8,4 @@
 #include <cmath>
 #include <iostream>
 
-//MAGICENGINE LIB
-#include <magicEngine/MagicEngine.h>
-#include <magicEngine/core/Core.h>
-
 #endif

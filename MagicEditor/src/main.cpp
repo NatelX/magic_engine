@@ -1,7 +1,6 @@
 #include <wx/app.h>
 #include <wx/image.h> 
 #include <magicEditor/editors/clientEditors/materialEditor/CMaterialEditor.h>
-#include "magicEditor/CEditorCore.h"
 
 using namespace MagicEditor;
 

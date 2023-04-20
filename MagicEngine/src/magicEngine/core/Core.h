@@ -2,13 +2,6 @@
 #define CORE_H
 
 #include <memory>
-#include <tuple>
-#include "strings/CString.h"
-#include "strings/CWString.h"
-#include "collections/CMap.h"
-#include "collections/CSet.h"
-#include "collections/CArray.h"
-#include "collections/CStaticArray.h"
 
 #ifdef MAGICENGINE_PLATFORM_WINDOWS
 #ifdef MAGICENGINE_BUILD_DLL
@@ -33,6 +26,7 @@ typedef long long int128;
 typedef long int64;
 typedef float float32;
 typedef double float64;
+
 
 #define BIT(x) (1 << x)
 
