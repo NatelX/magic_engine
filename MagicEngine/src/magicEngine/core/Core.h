@@ -2,6 +2,7 @@
 #define CORE_H
 
 #include <memory>
+#include <stdlib.h>
 
 #ifdef MAGICENGINE_PLATFORM_WINDOWS
 #ifdef MAGICENGINE_BUILD_DLL
@@ -12,6 +13,8 @@
 #else
 #error Magic Engine only supports Windows for now!
 #endif
+
+#define EXIT_APP_ERROR exit(-1);
 
 typedef unsigned char u_int8;
 typedef char int8;

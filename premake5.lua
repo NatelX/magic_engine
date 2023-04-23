@@ -25,11 +25,20 @@ project "MagicEngine"
 		"%{prj.name}/src/**.cpp"
 	}
 	
+	vulkanDirectory = "%{prj.name}/vendor/vulkan/"
+	
 	includedirs {
 		"%{prj.name}/src/",
 		"%{prj.name}/src/magicEngine",
-		"%{prj.name}/vendor/spdlog/include/"
+		"%{prj.name}/vendor/spdlog/include/",
+		vulkanDirectory .. "Include/"
 	}
+	
+	libdirs {
+		vulkanDirectory .. "lib/",
+	}
+	
+	links { "vulkan-1.lib" }
 	
 	cppdialect "C++17"
 	

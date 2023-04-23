@@ -3,21 +3,17 @@
 
 #include <wx/panel.h>
 #include <magicEngine/core/Core.h>
+#include <magicApollo/core/devices/CMagicApolloGraphicDevice.h>
 
 namespace MagicEngine {
     class CAppListener;
 }
 
 using namespace MagicEngine;
+using namespace MagicApollo;
 
 namespace WxWidgetsMagicEngine {
     namespace ExternalWidgets {
-
-        enum CMagicEditorRendererType {
-            VULKAN,
-            DIRECTX_12,
-            OPENGL_45
-        };
 
         class CMagicEnginePanel : public wxPanel {
         protected:
