@@ -7,7 +7,7 @@ MagicEditor is written in wxWidgets library and will be everthing you need to cr
  - add support for creating vulkan context in wxWidgets (clear window example)
  - add support for creating directx 12 context in wxWidgets (clear window example)
  
-#Compilation guide:
+# Compilation guide:
 1. Insert wxWidgets include files into: MagicEditor\vendor\wxWidgets\include
 2. Insert wxWidgets libraries files into: MagicEditor\vendor\wxWidgets\lib\vc_x64_lib
 3. Insert vulkan include files into: MagicEngine\vendor\vulkan\Include
