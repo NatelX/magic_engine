@@ -9,3 +9,5 @@ wxWidgets
 /MagicEngine/MagicEngine.vcxproj.filters
 bin-int
 bin
+lib
+Include
