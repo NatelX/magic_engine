@@ -6,7 +6,8 @@
 namespace MagicEngine {
 
 	CApplication::CApplication(CMagicEditorRendererType rendererType) : 
-	m_rendererType(rendererType) {
+		m_rendererType(rendererType) 
+	{
 		if (m_rendererType == CMagicEditorRendererType::VULKAN) {
 			m_graphicDevice = createUniquePtr<CVulkanGraphicDevice>();
 		} else {
