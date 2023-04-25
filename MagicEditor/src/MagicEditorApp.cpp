@@ -7,7 +7,9 @@ wxIMPLEMENT_APP(MagicEditorApp);
 
 bool MagicEditorApp::OnInit() {
 
-	m_app = createUniquePtr<MagicEngine::CApplication>(MagicApollo::CMagicEditorRendererType::VULKAN);
+	m_app = createUniquePtr<MagicEngine::CApplication>(
+		MagicApollo::CRendererType::VULKAN, 
+		MagicApollo::CRendererDebugger::ENABLED);
 
 	initWxWidgets();
 

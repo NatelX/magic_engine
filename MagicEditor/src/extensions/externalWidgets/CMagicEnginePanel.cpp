@@ -9,7 +9,7 @@ namespace WxWidgetsMagicEngine {
 
         CMagicEnginePanel::CMagicEnginePanel(
             wxWindow* parentWindow,
-            CMagicEditorRendererType renderType,
+            CRendererType renderType,
             CSharedPtr<CAppListener> appListener) :
             wxPanel(parentWindow),
             m_appListener(appListener)
@@ -27,7 +27,7 @@ namespace WxWidgetsMagicEngine {
 
         wxWindow* CMagicEnginePanel::obtainRenderPanelByType(
             wxWindow* parentWindow,
-            CMagicEditorRendererType renderType,
+            CRendererType renderType,
             CSharedPtr<CAppListener> appListener
         ) {
             if (renderType == VULKAN) {

@@ -22,7 +22,7 @@ namespace WxWidgetsMagicEngine {
         public:
             CMagicEnginePanel(
                 wxWindow* parentWindow, 
-                CMagicEditorRendererType renderType,
+                CRendererType renderType,
                 CSharedPtr<CAppListener> appListener);
 
             CSharedPtr<CAppListener> getAppListener() const;
@@ -30,7 +30,7 @@ namespace WxWidgetsMagicEngine {
         private:
             wxWindow* obtainRenderPanelByType(
                 wxWindow* parentWindow, 
-                CMagicEditorRendererType renderType,
+                CRendererType renderType,
                 CSharedPtr<CAppListener> appListener);
         };
     }

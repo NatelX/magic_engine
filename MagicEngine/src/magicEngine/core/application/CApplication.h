@@ -11,12 +11,14 @@ namespace MagicEngine {
 	class MAGICENGINE_API CApplication {
 	protected:
 		CUniquePtr<CMagicApolloGraphicDevice> m_graphicDevice;
-		CMagicEditorRendererType m_rendererType;
+		CRendererType m_rendererType;
 
 	public:
-		CApplication(CMagicEditorRendererType rendererType);
+		CApplication(
+			CRendererType rendererType,
+			CRendererDebugger rendererDebugger);
 
-		CMagicEditorRendererType getRendererType() const;
+		CRendererType getRendererType() const;
 	};
 
 }

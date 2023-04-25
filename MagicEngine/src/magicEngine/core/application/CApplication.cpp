@@ -5,17 +5,19 @@
 
 namespace MagicEngine {
 
-	CApplication::CApplication(CMagicEditorRendererType rendererType) : 
+	CApplication::CApplication(
+		CRendererType rendererType, 
+		CRendererDebugger rendererDebugger) :
 		m_rendererType(rendererType) 
 	{
-		if (m_rendererType == CMagicEditorRendererType::VULKAN) {
-			m_graphicDevice = createUniquePtr<CVulkanGraphicDevice>();
+		if (m_rendererType == CRendererType::VULKAN) {
+			m_graphicDevice = createUniquePtr<CVulkanGraphicDevice>(rendererDebugger);
 		} else {
 			EXIT_APP_ERROR
 		}
 	}
 
-	CMagicEditorRendererType CApplication::getRendererType() const {
+	CRendererType CApplication::getRendererType() const {
 		return m_rendererType;
 	}
 

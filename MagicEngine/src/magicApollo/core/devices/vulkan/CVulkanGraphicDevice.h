@@ -4,6 +4,8 @@
 #include "../CMagicApolloGraphicDevice.h"
 #include <vulkan/vulkan.hpp>
 #include <magicEngine/core/collections/CArray.h>
+#include "CVulkanInstance.h"
+#include "CVulkanLogging.h"
 
 using namespace MagicEngine;
 
@@ -11,15 +13,13 @@ namespace MagicApollo {
 
 	class MAGICENGINE_API CVulkanGraphicDevice : public CMagicApolloGraphicDevice {
 	protected:
-		vk::Instance m_vkInstance;
+		CUniquePtr<CVulkanInstance> m_vulkanInstance;
+		CUniquePtr<CVulkanLogging> m_debugLogging;
 
 	public:
-		CVulkanGraphicDevice();
-
-	private:
-		void initVulkanContext();
-		CArray<const char*> getVulkanExtensions() const;
-		CArray<const char*> getVulkanLayers() const;
+		CVulkanGraphicDevice(
+			CRendererDebugger rendererDebugger);
+		~CVulkanGraphicDevice();
 	};
 
 }
