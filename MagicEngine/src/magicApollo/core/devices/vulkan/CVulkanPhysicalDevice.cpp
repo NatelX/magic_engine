@@ -11,7 +11,7 @@ namespace MagicApollo {
 	{
 		MAGICENGINE_CORE_INFO("Choosing GPU");
 
-		std::vector<vk::PhysicalDevice> availableDevices = vkInstance.enumeratePhysicalDevices();
+		CArray<vk::PhysicalDevice> availableDevices = vkInstance.enumeratePhysicalDevices();
 
 		if (rendererDebugger == CRendererDebugger::ENABLED) {
 			MAGICENGINE_CORE_INFO("Number of available GPUs: {}", availableDevices.size());
@@ -33,6 +33,8 @@ namespace MagicApollo {
 				EXIT_APP_ERROR
 			}
 		}
+
+		findQueueFamilies(m_physicalDevice, rendererDebugger);
 	}
 
 	void CVulkanPhysicalDevice::logGPUProperties(
@@ -117,5 +119,41 @@ namespace MagicApollo {
 		}
 
 		return requiredExtensions.empty();
+	}
+
+	void CVulkanPhysicalDevice::findQueueFamilies(
+		const vk::PhysicalDevice& device, 
+		CRendererDebugger rendererDebugger
+	) {
+		QueueFamilyIndices queueFamilyindices;
+
+		CArray<vk::QueueFamilyProperties> queueFamilies = device.getQueueFamilyProperties();
+
+		if (rendererDebugger == CRendererDebugger::ENABLED) {
+			MAGICENGINE_CORE_INFO("There are {} queue families available on the system.", queueFamilies.size());
+		}
+
+		int index = 0;
+		for (vk::QueueFamilyProperties queueFamily : queueFamilies) {
+			if (queueFamily.queueFlags & vk::QueueFlagBits::eGraphics) {
+				m_queueFamilyIndices.graphicsFamilyIndex = index;
+				m_queueFamilyIndices.presentFamilyIndex = index;
+
+				if (rendererDebugger == CRendererDebugger::ENABLED) {
+					MAGICENGINE_CORE_INFO("Queue Family {} is suitable for graphics and presenting", index);
+				}
+
+				break;
+			}
+
+			index++;
+		}
+
+		if (!m_queueFamilyIndices.isComplete()) {
+			if (rendererDebugger == CRendererDebugger::ENABLED) {
+				MAGICENGINE_CORE_CRITICAL("Cannot find GPU device with proper queue families");
+				EXIT_APP_ERROR
+			}
+		}
 	}
 }

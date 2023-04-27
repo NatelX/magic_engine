@@ -16,7 +16,7 @@ namespace MagicEngine {
 	}();
 
 	void CLog::init() {
-		spdlog::set_pattern("%^[%T] %n: %v%$");
+		spdlog::set_pattern("[%Y-%m-%d %H:%M:%S] [thread %t] %v");
 		m_coreLogger = CSharedPtr<spdlog::logger>(
 			spdlog::basic_logger_mt("MagicEngine", "logs/coreLogs.txt"));
 		m_coreLogger->set_level(spdlog::level::trace);
