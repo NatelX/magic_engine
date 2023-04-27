@@ -72,7 +72,7 @@ namespace MagicApollo {
 			extensions.push_back("VK_EXT_debug_utils");
 		}
 
-		std::vector<vk::ExtensionProperties> supportedExtensions = vk::enumerateInstanceExtensionProperties();
+		CArray<vk::ExtensionProperties> supportedExtensions = vk::enumerateInstanceExtensionProperties();
 
 		if (rendererDebugger == CRendererDebugger::ENABLED) {
 			MAGICENGINE_CORE_INFO("Device can support the following extensions: ");
@@ -81,22 +81,24 @@ namespace MagicApollo {
 			}
 		}
 
-		bool found;
-		for (const char* extension : extensions) {
-			found = false;
-			for (vk::ExtensionProperties supportedExtension : supportedExtensions) {
-				if (strcmp(extension, supportedExtension.extensionName) == 0) {
-					found = true;
-					break;
+		std::for_each(
+			extensions.begin(),
+			extensions.end(),
+			[supportedExtensions, rendererDebugger](const char* extension) {
+				auto foundIt = std::find_if(
+					supportedExtensions.begin(),
+					supportedExtensions.end(),
+					[extension](const vk::ExtensionProperties& supportedExtension) {
+						return strcmp(extension, supportedExtension.extensionName) == 0;
+					}
+				);
+				if (foundIt == supportedExtensions.end()) {
+					if (rendererDebugger == CRendererDebugger::ENABLED) {
+						MAGICENGINE_CORE_CRITICAL("Extension \"{}\" is not supported", extension);
+					}
+					EXIT_APP_ERROR
 				}
-			}
-			if (!found) {
-				if (rendererDebugger == CRendererDebugger::ENABLED) {
-					MAGICENGINE_CORE_CRITICAL("Extension \"{}\" is not supported", extension);
-				}
-				EXIT_APP_ERROR
-			}
-		}
+			});
 
 		return extensions;
 	}
@@ -109,7 +111,7 @@ namespace MagicApollo {
 			layers.push_back("VK_LAYER_KHRONOS_validation");
 		}
 
-		std::vector<vk::LayerProperties> supportedLayers = vk::enumerateInstanceLayerProperties();
+		CArray<vk::LayerProperties> supportedLayers = vk::enumerateInstanceLayerProperties();
 
 		if (rendererDebugger == CRendererDebugger::ENABLED) {
 			MAGICENGINE_CORE_INFO("Device can support the following layers: ");
@@ -118,22 +120,25 @@ namespace MagicApollo {
 			}
 		}
 
-		bool found;
-		for (const char* layer : layers) {
-			found = false;
-			for (vk::LayerProperties supportedLayer : supportedLayers) {
-				if (strcmp(layer, supportedLayer.layerName) == 0) {
-					found = true;
-					break;
-				}
-			}
-			if (!found) {
-				if (rendererDebugger == CRendererDebugger::ENABLED) {
-					MAGICENGINE_CORE_CRITICAL("Layer \"{}\" is not supported", layer);
+		std::for_each(
+			layers.begin(),
+			layers.end(),
+			[supportedLayers, rendererDebugger](const char* layer) {
+				auto foundIt = std::find_if(
+					supportedLayers.begin(),
+					supportedLayers.end(),
+					[layer](const vk::LayerProperties& supportedLayer) {
+						return strcmp(layer, supportedLayer.layerName) == 0;
+					}
+				);
+				if (foundIt == supportedLayers.end()) {
+					if (rendererDebugger == CRendererDebugger::ENABLED) {
+						MAGICENGINE_CORE_CRITICAL("Extension \"{}\" is not supported", layer);
+					}
 					EXIT_APP_ERROR
 				}
-			}
-		}
+			});
+
 		return layers;
 	}
 

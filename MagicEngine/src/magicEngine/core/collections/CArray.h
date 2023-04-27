@@ -7,8 +7,7 @@
 namespace MagicEngine {
 
 	template <typename T>
-	class MAGICENGINE_API CArray : public std::vector<T> {
-	};
+	using CArray = std::vector<T>;
 
 }
 

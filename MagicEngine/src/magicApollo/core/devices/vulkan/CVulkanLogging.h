@@ -2,7 +2,7 @@
 #define CVULKANLOGGIN_H
 
 #include <magicEngine/core/Core.h>
-#include <vulkan/vulkan.hpp>
+#include "CVulkan.h"
 
 namespace MagicApollo {
 

@@ -2,10 +2,9 @@
 #define CVULKANGRAPHICDEVICE_H
 
 #include "../CMagicApolloGraphicDevice.h"
-#include <vulkan/vulkan.hpp>
-#include <magicEngine/core/collections/CArray.h>
 #include "CVulkanInstance.h"
 #include "CVulkanLogging.h"
+#include "CVulkanPhysicalDevice.h"
 
 using namespace MagicEngine;
 
@@ -15,6 +14,7 @@ namespace MagicApollo {
 	protected:
 		CUniquePtr<CVulkanInstance> m_vulkanInstance;
 		CUniquePtr<CVulkanLogging> m_debugLogging;
+		CUniquePtr<CVulkanPhysicalDevice> m_physicalDevice;
 
 	public:
 		CVulkanGraphicDevice(

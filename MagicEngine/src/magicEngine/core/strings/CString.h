@@ -6,8 +6,7 @@
 
 namespace MagicEngine {
 
-	class MAGICENGINE_API CString : public std::string {
-	};
+	typedef std::string CString;
 
 }
 

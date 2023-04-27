@@ -2,7 +2,7 @@
 #define CVULKANINSTANCE_H
 
 #include <magicEngine/core/Core.h>
-#include <vulkan/vulkan.hpp>
+#include "CVulkan.h"
 
 using namespace MagicEngine;
 
