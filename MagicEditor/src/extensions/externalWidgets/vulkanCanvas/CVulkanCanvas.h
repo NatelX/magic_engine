@@ -1,25 +1,16 @@
 #ifndef CVULKANCANVAS_H
 #define CVULKANCANVAS_H
 
-#include <wx/glcanvas.h>
+#include <wx/window.h>
 #include <magicEngine/core/Core.h>
 
-namespace MagicEngine {
-    class CAppHandler;
-    class CAppListener;
-}
-
-using namespace MagicEngine;
-
-namespace WxWidgetsMagicEngine {
+namespace MagicEditor {
     namespace ExternalWidgets {
 
-        class CVulkanCanvas : public wxGLCanvas {
+        class CVulkanCanvas : public wxWindow {
         protected:
-            CSharedPtr<CAppHandler> m_appHandler;
-
         public:
-            CVulkanCanvas(wxWindow* parent, CSharedPtr<CAppListener> appListener);
+            CVulkanCanvas(wxWindow* parent);
             ~CVulkanCanvas();
 
         private:
